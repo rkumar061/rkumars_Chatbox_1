@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chats</title>
+    <script>window.scrollTo(0,document.querySelector(".scrollingContainer").scrollHeight);</script>
+    <style>
+        .center {
+              margin: auto;
+              width: 50%;
+
+             padding: 10px;
+              text-align: center;
+        }
+        .button {
+              background-color: cyan;
+              border: none;
+              color: white;
+              padding: 15px 50px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+        }
+        .hide{
+            visibility: hidden
+        }
+        .top{
+
+          overflow: hidden;
+          background-color: cyan;
+          position: fixed;
+          top: 0;
+          width: 100%;
+        }
+        .footer {
+           position: fixed;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           background-color: red;
+           color: white;
+           text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+    <div class="top"><h1>Hey {{fi}}</h1></div>
+    <div class="center">
+         {% for chat in chats%}
+                {{chat}}<br>
+
+            {% endfor %}
+    <br><br><br><br><br><br>
+    <div class="footer">
+    <form action="newmsg" method="post">
+        {% csrf_token %}
+        <div class="hide">
+            <input type="text" value="{{fi}}" name="name">
+        </div>
+
+        your massage ----> <input type="text" name="text">
+        <button type="submit"> Send </button>
+    </form>
+    <form action="refresh" method="post">
+        {% csrf_token %}
+        <div class="hide">
+        <input type="text" value="{{fi}}" name="name">
+        </div>
+        <button type="submit" class="button"> refresh </button>
+    </form>
+    </div></div>
+</body>
+</html>
